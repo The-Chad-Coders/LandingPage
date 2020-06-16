@@ -1,0 +1,117 @@
+$background: #f1f1f1;
+$fontStack: "Helvética", Arial, Sans-Serif;
+$textColor: white;
+$primaryColor: #00adef;
+$primaryClickColor: #049ad4;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin headerGradient {
+  background: #3b055d;
+  background: -moz-linear-gradient(#3b055d, #430f85);
+  background: -webkit-linear-gradient(#3b055d, #430f85);
+  background: linear-gradient(#3b055d, #430f85);
+}
+
+body {
+  background-color: $background;
+  font-family: $fontStack;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  @include headerGradient();
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 100%;
+  min-height: 500px;
+
+  .logo {
+    min-width: 30%;
+    max-width: 50%;
+    margin: 3em;
+    img {
+      max-width: 90%;
+    }
+  }
+
+  .navbar {
+    align-self: stretch;
+    font-size: 0.9em;
+    margin-top: 3em;
+    flex-flow: row wrap;
+    min-width: 40%;
+    justify-content: space-around;
+    display: flex;
+    list-style: none;
+    .navbar-item {
+      padding-bottom: 1em;
+      max-height: 20px;
+      &.active {
+        border-bottom: 1px solid #00adef;
+        a {
+          color: #00adef;
+        }
+      }
+      a {
+        padding: 0.3em 0;
+        text-decoration: none;
+        color: $textColor;
+      }
+    }
+  }
+
+  .header-text {
+    text-align: center;
+    color: $textColor;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+    max-width: 30%;
+    margin-left: 2.5em;
+    margin-bottom: 3em;
+    h2 {
+      margin: 0 0 1em 0;
+    }
+    .btn {
+      margin: 2em 0.5em;
+    }
+  }
+
+  .header-image {
+    max-width: 40%;
+
+    img {
+      margin-top: -9em;
+      margin-left: 8em;
+      max-width: 80%;
+    }
+  }
+}
+
+.btn {
+  padding: 0.75em 1.5em;
+  font-size: 1.2em;
+  border-radius: 100px;
+  color: $textColor;
+  display: inline-block;
+  outline: none !important;
+  text-decoration: none;
+  border: 1px solid transparent;
+  &.primary {
+    border-color: $primaryColor;
+    background: $primaryColor;
+    &:active {
+      background-color: $primaryClickColor;
+    }
+  }
+
+  &.flat {
+    background-color: transparent;
+  }
+}
