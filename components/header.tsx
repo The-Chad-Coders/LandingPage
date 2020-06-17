@@ -20,9 +20,23 @@ const Header = () => {
   }, [selectedSection]);
 
   return (
-    <div className="header">
-      <a className="logo">
+    <div className="header grid-container">
+      <a className="logoAndText">
         <img src="/img/logo.png" alt="logo" />
+        <div className="header-text">
+          <h2>The Chad Coders</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem hic molestiae harum
+            enim nesciunt beatae, maiores voluptates aspernatur dignissimos delectus. Quibusdam
+            dolore sed alias dolores expedita aut minima praesentium debitis!
+          </p>
+          <button type="button" className="btn primary flat">
+            Sobre Nosotros
+          </button>
+          <button type="button" className="btn primary">
+            Contactanos
+          </button>
+        </div>
       </a>
       <ul className="navbar">
         {sections.map((section, index) => (
@@ -36,20 +50,6 @@ const Header = () => {
           </li>
         ))}
       </ul>
-      <div className="header-text">
-        <h2>The Chad Coders</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem hic molestiae harum
-          enim nesciunt beatae, maiores voluptates aspernatur dignissimos delectus. Quibusdam
-          dolore sed alias dolores expedita aut minima praesentium debitis!
-        </p>
-        <button type="button" className="btn primary flat">
-          Sobre Nosotros
-        </button>
-        <button type="button" className="btn primary">
-          Contactanos
-        </button>
-      </div>
       <div className="header-image">
         <img src="/img/fondoheader.png" alt="brand image" />
       </div>
