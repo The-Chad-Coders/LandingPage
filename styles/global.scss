@@ -1,48 +1,43 @@
 /*Global Styles*/
 
-$fontStack: "Helvética", Arial, Sans-Serif;
+$fontStack: 'Helvética', Arial, Sans-Serif;
 $primaryColor: #00adef;
 $primaryClickColor: #049ad4;
 $primaryTextColor: white;
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  width: 100%;
-  font-family: $fontStack;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .grid-container {
-  display: grid;
+    display: grid;
 }
 
 .btn {
-  padding: 0.75em 1.5em;
-  font-size: 1.2em;
-  border-radius: 100px;
-  color: $primaryTextColor;
-  display: inline-block;
-  outline: none !important;
-  text-decoration: none;
-  border: 1px solid transparent;
-  &.primary {
-    border-color: $primaryColor;
-    background: $primaryColor;
-    &:active {
-      background-color: $primaryClickColor;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 100px;
+    color: $primaryTextColor;
+    display: inline-block;
+    outline: none !important;
+    text-decoration: none;
+    border: 1px solid transparent;
+    &.primary {
+        border-color: $primaryColor;
+        background: $primaryColor;
+        &:active {
+            background-color: $primaryClickColor;
+        }
     }
-  }
 
-  &.flat {
-    background-color: transparent;
-    &:active {
-      background-color: rgba(0, 0, 0, 0.1);
+    &.flat {
+        background-color: transparent;
+        &:active {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
     }
-  }
 }
 
 /* Components Styles */
@@ -52,112 +47,60 @@ body {
 $textColor: white;
 
 @mixin headerGradient {
-  background: #3b055d;
-  background: -moz-linear-gradient(#3b055d, #430f85);
-  background: -webkit-linear-gradient(#3b055d, #430f85);
-  background: linear-gradient(#3b055d, #430f85);
+    background: #3b055d;
+    background: -moz-linear-gradient(#3b055d, #430f85);
+    background: -webkit-linear-gradient(#3b055d, #430f85);
+    background: linear-gradient(#3b055d, #430f85);
+    background-repeat: no-repeat;
+}
+
+@mixin headerImg {
 }
 
 .header {
-  @include headerGradient();
-  min-width: 100%;
-  min-height: 500px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.15fr 1fr;
-  grid-template-areas: "logo navbar" "logo header-image";
+    @include headerGradient();
+    min-width: 100%;
+    grid-template-areas: 'logo navbar' 'logo bgHeader';
 
-  .logoAndText {
-    grid-area: logo;
-    margin: 3em;
-    img {
-      margin: 0 3em;
-      max-width: 90%;
+    .bgHeader {
+        background: url('/img/fondoheader.png');
+        background-repeat: no-repeat;
+        grid-area: bgHeader;
+        background-position: center;
+        background-size: contain;
     }
-    .header-text {
-      color: $textColor;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
-      margin-bottom: 3em;
-      h2 {
-        max-width: 80%;
-        margin: 1em 0;
-      }
-      p {
-        max-width: 80%;
-      }
-      .btn {
-        margin: 2em 0.5em;
-      }
-    }
-  }
-  .navbar {
-    grid-area: navbar;
-    font-size: 0.9em;
-    max-height: 100px;
-    margin: 3em 0;
-    flex-flow: row wrap;
-    max-height: 100px;
-    justify-content: space-evenly;
-    display: flex;
-    list-style: none;
-    .navbar-item {
-      padding-bottom: 1em;
-      max-height: 20px;
-      &.active {
-        border-bottom: 1px solid #00adef;
-        a {
-          color: #00adef;
+
+    .logoAndText {
+        grid-area: logo;
+        .header-text {
+            color: $textColor;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+            .btn {
+                margin: 35px 10px;
+            }
         }
-      }
-      a {
-        padding: 0.3em 0;
-        text-decoration: none;
-        color: $textColor;
-      }
-    }
-  }
-
-  .header-image {
-    grid-area: header-image;
-    margin-left: 5em;
-    img {
-      max-width: 70%;
-    }
-  }
-}
-
-@media (max-width: 500px) {
-  .grid-container {
-    grid-template-columns: 1fr !important;
-  }
-  .header {
-    grid-template-columns: 1fr !important;
-    grid-template-areas: none !important;
-    * {
-      margin: 0 !important;
     }
     .navbar {
-      grid-row: 1/2 !important;
-      grid-column: 1/2 !important;
-      margin-top: 2em !important;
+        font-size: 15px;
+        max-height: 100px;
+        flex-flow: row wrap;
+        max-height: 100px;
+        justify-content: space-evenly;
+        display: flex;
+        list-style: none;
+        .navbar-item {
+            padding-bottom: 20px;
+            max-height: 20px;
+            &.active {
+                border-bottom: 1px solid $primaryColor;
+                a {
+                    color: $primaryColor;
+                }
+            }
+            a {
+                text-decoration: none;
+                color: $textColor;
+            }
+        }
     }
-    .logoAndText {
-      h2 {
-        margin-top: 1em !important;
-      }
-      h2,
-      p {
-        display: inline-block;
-        margin-bottom: 1em !important;
-      }
-      text-align: center;
-      grid-row: 2/3 !important;
-      grid-column: 1/2 !important;
-      .btn {
-        margin: 0 0.3em !important;
-      }
-    }
-    .header-image {
-      display: none;
-    }
-  }
 }

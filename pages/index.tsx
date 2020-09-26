@@ -1,5 +1,11 @@
-import Header from "../components/header";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import Header from '../components/header';
 
-const Home = () => <Header />;
+const Home = () => (
+    <div>
+        <Header />
+    </div>
+);
 
 export default Home;
